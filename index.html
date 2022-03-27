@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registration</title>
+</head>
+<body>
+
+    <form action="">
+        <div class="row">
+            <div class="col">
+                User ID:
+            </div>
+            <div class="col">
+                <input type="text" name="txtUserID" id="txtUserID" required>
+                <span id="statusOfUserID"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Password:
+            </div>
+            <div class="col">
+                <input type="password" name="txtPassword" id="txtPassword" required>
+                <span id="statusOfPassword"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Name:
+            </div>
+            <div class="col">
+                <input type="text" name="txtName" id="txtName" required>
+                <span id="statusOfName"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Address:
+            </div>
+            <div class="col">
+                <input type="text" name="txtAddress" id="txtAddress">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Country:
+            </div>
+            <div class="col">
+               <select id="Country">
+                   <option>Please select a country</option>
+                   <option></option>
+                   <option></option>
+               </select>
+               <span id="statusOfCountry"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                ZIP Code:
+            </div>
+            <div class="col">
+                <input type="number" name="Code" id="Code">
+                <span id="statusOfCode"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+               
+            </div>
+            <div class="col">
+                <input type="submit" name="btnRegister" id="btnRegister" value="Register">
+            </div>
+        </div>
+        
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
