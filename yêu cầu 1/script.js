@@ -1,43 +1,76 @@
-let userID = document.getElementById('txtUserID');
-let statusOfUserID = document.getElementById('statusOfUserID')
-userID.addEventListener('focusout', leaveUserId)
-
-function leaveUserId(){
-    var userIDRegex = /^[a-zA-Z0-9]{5,12}$/;
-    if(userIDRegex.test(userID.value)){
-        statusOfUserID.textContent = 'UserID hợp lệ'
-        statusOfUserID.style.color = 'blue'
-    }else{
-        statusOfUserID.textContent = 'UserID không hợp lệ. Độ dài từ 5 - 12'
-        statusOfUserID.style.color = 'red'
+// Gọi tất cả các hàm được sử dụng để xác nhận.
+function formValidation() {
+    var uid = document.registration.userid;
+    var passid = document.registration.passid;
+    var uname = document.registration.username;
+    var uadd = document.registration.address;
+    var ucountry = document.registration.country;
+    var uzip = document.registration.zip;
+    var uemail = document.registration.email;
+    var umsex = document.registration.msex;
+    var ufsex = document.registration.fsex; if (userid_validation(uid, 5, 12)) {
+        if (passid_validation(passid, 7, 12)) {
+            if (allLetter(uname)) {
+                if (alphanumeric(uadd)) {
+                    if (countryselect(ucountry)) {
+                        if (allnumeric(uzip)) {
+                            if (ValidateEmail(uemail)) {
+                                if (validsex(umsex, ufsex)) {
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+// Hàm JavaScript để xác thực userid
+function userid_validation(uid, mx, my) {
+    var uid_len = uid.value.length;
+    if (uid_len == 0 || uid_len >= my || uid_len < mx) {
+        alert("Id người dùng không được để trống và độ dài từ  " + mx + " đến " + my);
+        uid.focus();
+        return false;
+    }
+    return true;
+}
+// Hàm JavaScript để xác thực password
+function passid_validation(passid, mx, my) {
+    var passid_len = passid.value.length;
+    if (passid_len == 0 || passid_len >= my || passid_len < mx) {
+        alert("Mật khẩu không được để trống và độ dài ở giữa " + mx + " đến " + my);
+        passid.focus();
+        return false;
+    }
+    return true;
+}
+// Hàm JavaScript để xác thực name
+function allLetter(uname) {
+    var letters = /^[A-Za-z]+$/;
+    if (uname.value.match(letters)) {
+        return true;
+    }
+    else {
+        alert('Tên người dùng chỉ được có các ký tự trong bảng chữ cái');
+        uname.focus();
+        return false;
     }
 }
-let password = document.getElementById('txtPassword');
-let statusOfPassword = document.getElementById('statusOfPassword')
-password.addEventListener('focusout', leavePassword)
-function leavePassword(){
-    var passwordRegex = /^[a-zA-Z0-9]{7,12}$/;
-    if(passwordRegex.test(password.value)){
-        statusOfPassword.textContent = 'Password hợp lệ'
-        statusOfPassword.style.color = 'blue'
-    }else{
-        statusOfPassword.textContent = 'Password không hợp lệ. Độ dài từ 7 - 12'
-        statusOfPassword.style.color = 'red'
+// Hàm JavaScript để xác thực address
+function alphanumeric(uadd) {
+    var letters = /^[0-9a-zA-Z]+$/;
+    if (uadd.value.match(letters)) {
+        return true;
+    }
+    else {
+        alert('Địa chỉ người dùng chỉ được có các ký tự chữ và số');
+        uadd.focus();
+        return false;
     }
 }
-let name = document.getElementById('txtName');
-let statusOfName = document.getElementById('statusOfName')
-name.addEventListener('focusout', leaveName)
-function leaveName(){
-    var NameRegex = /^[a-zA-Z]{1,}$/
-    if(NameRegex.test(name.value)){
-        statusOfName.textContent = 'Name hợp lệ'
-        statusOfName.style.color = 'blue'
-    }else{
-        statusOfName.textContent = 'Name không hợp lệ.'
-        statusOfName.style.color = 'red'
-    }
-}
+// Hàm JavaScript để xác thực country
 function countryselect(ucountry) {
     if (ucountry.value == "Default") {
         alert('Chọn quốc gia của bạn từ danh sách');
@@ -48,6 +81,7 @@ function countryselect(ucountry) {
         return true;
     }
 } 
+// Hàm JavaScript để xác thực ZIP code
 function allnumeric(uzip) {
     var numbers = /^[0-9]+$/;
     if (uzip.value.match(numbers)) {
@@ -58,7 +92,9 @@ function allnumeric(uzip) {
         uzip.focus();
         return false;
     }
-}function ValidateEmail(uemail) {
+}
+// Hàm JavaScript để xác thực định dạng email
+function ValidateEmail(uemail) {
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (uemail.value.match(mailformat)) {
         return true;
@@ -69,7 +105,7 @@ function allnumeric(uzip) {
         return false;
     }
 }
-
+// // Hàm JavaScript để xác thực giới tính
 function validsex(umsex, ufsex) {
     x = 0;
 
